@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="landscape" viewBox="0 0 620 700" preserveAspectRatio="xMidYMid slice" aria-labelledby="landscape-title">
+<title id="landscape-title">A red race car and a golden race car on the same road, with a wide sunset ahead.</title>
+<defs><symbol id="car-top" viewBox="0 0 56 105"><rect x="1" y="22" width="8" height="20" rx="3" fill="#263b36"/><rect x="47" y="22" width="8" height="20" rx="3" fill="#263b36"/><rect x="1" y="72" width="8" height="20" rx="3" fill="#263b36"/><rect x="47" y="72" width="8" height="20" rx="3" fill="#263b36"/><path d="M6 89V23Q7 5 28 4q21 1 22 19v66q0 11-22 11T6 89" fill="currentColor"/><path d="M12 38q16-7 32 0l-3 16H15Z" fill="#334b46"/><path d="m15 73-3 13q16 5 32 0l-3-13Z" fill="#334b46"/><path d="m11 42 2 37M45 42l-2 37" stroke="#b9c4ae" stroke-width="2" opacity=".45"/><path d="M11 24q4-5 9-5m16 0q5 0 9 5" stroke="#efe2b9" stroke-width="4"/><path d="M7 94h42" stroke="#6b4c35" stroke-width="3"/><rect x="2" y="93" width="52" height="6" rx="1" fill="currentColor"/><path d="M28 8v26" stroke="#fff2cf" opacity=".15" stroke-width="2"/></symbol>
+<linearGradient id="sky" x2=".1" y2="1"><stop stop-color="#dfd8bf"/><stop offset=".43" stop-color="#e7bc89"/><stop offset="1" stop-color="#c87851"/></linearGradient>
+<radialGradient id="sun-halo"><stop stop-color="#ffe7ac" stop-opacity=".65"/><stop offset="1" stop-color="#efd1a0" stop-opacity="0"/></radialGradient>
+<linearGradient id="sea" x2=".7" y2="1"><stop stop-color="#9caeaa"/><stop offset=".4" stop-color="#6c9796"/><stop offset="1" stop-color="#385e61"/></linearGradient>
+<linearGradient id="earth" x2=".2" y2="1"><stop stop-color="#7a876b"/><stop offset=".45" stop-color="#526d58"/><stop offset="1" stop-color="#243f35"/></linearGradient>
+<linearGradient id="road" x2=".6" y2="1"><stop stop-color="#b1a78b"/><stop offset=".5" stop-color="#8d8b75"/><stop offset="1" stop-color="#657362"/></linearGradient>
+<linearGradient id="lower-shade" x2="0" y2="1"><stop stop-color="#1c3b30" stop-opacity="0"/><stop offset="1" stop-color="#102e27" stop-opacity=".6"/></linearGradient>
+<filter id="grain"><feTurbulence baseFrequency=".7" numOctaves="3" stitchTiles="stitch" type="fractalNoise"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".055"/></feComponentTransfer><feBlend in="SourceGraphic" mode="multiply"/></filter>
+<filter id="car-shadow"><feDropShadow dx="-5" dy="7" stdDeviation="3" flood-color="#16322a" flood-opacity=".45"/></filter>
+</defs>
+<g filter="url(#grain)">
+<rect width="620" height="700" fill="url(#sky)"/>
+<circle cx="429" cy="206" r="155" fill="url(#sun-halo)"/>
+<circle cx="429" cy="206" r="65" fill="#f8d99c"/>
+<path d="M-30 180q90-28 155 2t136 3M92 155q87-14 121 2" fill="none" stroke="#eadcc2" stroke-width="5" opacity=".28"/>
+<path d="M0 306 54 287 103 296 162 277 225 292 283 266 365 292 422 276 464 286 523 256 620 287V370H0Z" fill="#a4a58b"/>
+<path d="m0 336 81-36 63 13 58-13 69 7 63-23 56 30 50-7 98-6 82-25v102H0Z" fill="#849a84"/>
+<path d="M0 335h620v365H0Z" fill="url(#sea)"/>
+<g stroke="#c4c8ad" opacity=".3" fill="none"><path d="M0 359h289m-160 8h222M15 386h213m-78 12h171M0 420h149m-28 19h174M6 476h182m-141 38h99M0 558h81"/><path d="m362 344 79-1m-103 12 107-1m-155 28 152-1m-204 32 189-1" stroke="#edd6a7" stroke-width="2"/></g>
+<path d="M620 321q-77-14-137 1t-52 50q2 34-48 70t-43 84q12 34-22 56t-54 50L224 700h396Z" fill="#c8bca0"/>
+<path d="M620 318q-75-8-123 4t-48 47q9 42-43 80t-40 78q14 41-17 68t-51 105h322Z" fill="url(#earth)"/>
+<path d="M619 328c-82-20-146 0-145 44 2 31 55 50 54 91-1 58-98 59-118 125-11 35 3 82 60 146" fill="none" stroke="#e3cbb0" stroke-width="64"/>
+<path d="M619 328c-82-20-146 0-145 44 2 31 55 50 54 91-1 58-98 59-118 125-11 35 3 82 60 146" fill="none" stroke="url(#road)" stroke-width="57"/>
+<path d="M619 328c-82-20-146 0-145 44 2 31 55 50 54 91-1 58-98 59-118 125-11 35 3 82 60 146" fill="none" stroke="#ead398" stroke-width="1.5"/>
+<path d="M619 331c-82-20-144-1-142 41 1 30 56 50 54 91-1 60-99 61-118 125-11 35 3 81 59 145" fill="none" stroke="#ead398" stroke-width="1.5" opacity=".75"/>
+<path d="M-20 576q96-30 169-21t169 72l2 73H0Z" fill="#305749" opacity=".5"/>
+<g stroke="#a4ad8b" stroke-width="1.2" fill="none" opacity=".6"><path d="m364 461 9 16m-20-4 8 16m-17-2 7 17m-17-3 7 17m-15-2 6 17m-15 2 5 16"/><path d="m363 472-34 69"/></g>
+<g fill="#3f6450"><path d="m560 391 12-36 12 36h-8v11h-8v-11Zm32 26 13-45 13 45h-9v12h-8v-12ZM552 546l15-45 15 45h-10v14h-9v-14Zm-53 40 15-44 15 44h-11v13h-8v-13Zm74 4 18-54 18 54h-12v14h-10v-14Z"/></g>
+<g fill="#b6b196" opacity=".7"><ellipse cx="381" cy="438" rx="4" ry="2"/><ellipse cx="368" cy="451" rx="6" ry="2"/><ellipse cx="355" cy="464" rx="3" ry="2"/><ellipse cx="586" cy="469" rx="7" ry="3"/><ellipse cx="595" cy="475" rx="4" ry="2"/></g>
+<g transform="translate(411 582) rotate(11) scale(.65)" filter="url(#car-shadow)" style="color:#bd513b"><use href="#car-top" width="56" height="105"/><text x="28" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="17" fill="#f4da9e" font-weight="bold" font-style="italic">95</text></g>
+<g transform="translate(446 505) rotate(44) scale(.53)" filter="url(#car-shadow)" style="color:#e9b952"><use href="#car-top" width="56" height="105"/><text x="28" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="17" fill="#3c5e57" font-weight="bold" font-style="italic">51</text></g>
+<rect y="485" width="620" height="215" fill="url(#lower-shade)"/>
+<path d="m288 201 7-3 7 2m30-13 6-3 6 2" stroke="#847e61" stroke-width="1.5" fill="none" opacity=".7"/>
+</g>
+</svg>

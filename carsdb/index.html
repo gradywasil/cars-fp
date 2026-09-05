@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b0c0e">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="CarsDB is a catalogue of 1,455 Disney and Pixar Cars die-cast vehicles across 30 series. Search it, rate it, and keep track of what's on your shelf.">
+<meta property="og:title" content="CarsDB — Fourteen Hundred and Fifty-Five">
+<meta property="og:description" content="Every die-cast we could find, in one place. Browse, rate, and track your collection at cars.arrangedgodly.com.">
+<meta property="og:type" content="website">
+<title>CarsDB — The Catalogue</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='9' fill='%230b0c0e'/%3E%3Cg fill='%23f2f1ee'%3E%3Crect x='14' y='14' width='9' height='9'/%3E%3Crect x='32' y='14' width='9' height='9'/%3E%3Crect x='23' y='23' width='9' height='9'/%3E%3Crect x='41' y='23' width='9' height='9'/%3E%3Crect x='14' y='32' width='9' height='9'/%3E%3Crect x='32' y='32' width='9' height='9'/%3E%3C/g%3E%3Cg fill='%23e31c1c'%3E%3Crect x='23' y='14' width='9' height='9'/%3E%3Crect x='41' y='14' width='9' height='9'/%3E%3Crect x='14' y='23' width='9' height='9'/%3E%3Crect x='32' y='23' width='9' height='9'/%3E%3Crect x='23' y='32' width='9' height='9'/%3E%3Crect x='41' y='32' width='9' height='9'/%3E%3C/g%3E%3Crect x='14' y='44' width='36' height='6' fill='%23e31c1c'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#0b0c0e;--panel:#131519;--panel-2:#191c21;--panel-3:#20242a;
+  --line:#282c34;--line-soft:#1e2228;
+  --cream:#f2f1ee;--muted:#8f939c;--dim:#6a6e77;
+  --red:#e31c1c;--red-hi:#ff3a2c;--gold:#e8b04b;
+  --display:'Barlow Condensed',Impact,'Arial Narrow',sans-serif;
+  --body:'DM Sans',Segoe UI,Arial,sans-serif;
+  --mono:'DM Mono',Consolas,ui-monospace,monospace;
+  --gutter:clamp(20px,4.6vw,72px);--max:1360px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+body{margin:0;background:var(--void);color:var(--cream);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,figure,ul,ol{margin:0}
+h1,h2{font-family:var(--display);font-weight:800;text-transform:uppercase;line-height:.86;letter-spacing:-.02em}
+h3{font-weight:600}
+ul,ol{padding:0;list-style:none}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit;-webkit-tap-highlight-color:transparent}
+::selection{background:var(--red);color:#fff}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--red-hi);outline-offset:5px}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.mono{font:500 10px/1.6 var(--mono);letter-spacing:.11em;text-transform:uppercase}
+.eyebrow{font:500 10px/1.5 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--red-hi);display:flex;align-items:center;gap:10px}
+.eyebrow:before{content:'';width:6px;height:6px;background:currentColor;flex:none}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:fixed;left:18px;top:-70px;z-index:400;background:var(--red);color:#fff;padding:12px 20px;font:600 12px var(--mono);text-decoration:none}
+.skip:focus{top:calc(var(--cc-bar-height,45px) + 10px)}
+
+/* ---------- header ---------- */
+.header{position:sticky;top:var(--cc-bar-height,45px);z-index:120;height:70px;display:flex;align-items:center;gap:24px;padding-inline:var(--gutter);background:#0b0c0ee8;backdrop-filter:blur(11px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-height:44px}
+.brand-mark{width:34px;height:34px;border:1px solid var(--line);border-radius:8px;background:var(--panel-2);display:grid;place-items:center;flex:none}
+.brand-mark svg{width:22px;height:22px}
+.wordmark{font:800 25px/1 var(--display);letter-spacing:.02em;text-transform:uppercase}
+.wordmark span{color:var(--red-hi)}
+.header-nav{display:flex;gap:26px;margin-left:auto}
+.header-nav a{font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;display:flex;align-items:center;min-height:44px;transition:color .15s}
+.header-nav a:hover,.header-nav a[aria-current=location]{color:var(--cream)}
+.header-cta{display:inline-flex;align-items:center;gap:11px;background:var(--red);color:#fff;padding:12px 18px;min-height:44px;font:600 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .16s}
+.header-cta:hover{background:var(--red-hi)}
+@media(max-width:900px){.header-nav{display:none}.header{gap:14px}.header-cta{margin-left:auto}}
+@media(max-width:420px){.header-cta span{display:none}.header{height:62px}}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(52px,8vw,104px) 0 clamp(38px,5vw,62px);position:relative;overflow:hidden}
+.hero:before{content:'';position:absolute;inset:0;background:radial-gradient(120% 90% at 78% 8%,#e31c1c1f,transparent 60%);pointer-events:none}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(30px,5vw,72px);align-items:end}
+.hero h1{font-size:clamp(50px,7.3vw,104px);margin-block:24px 0}
+.hero h1 .num{display:block;color:var(--red-hi);font-size:1.16em;letter-spacing:-.045em}
+.hero h1 .thin{display:block;-webkit-text-stroke:1.4px var(--cream);color:transparent}
+.hero-lede{font-size:clamp(15px,1.65vw,19px);line-height:1.65;color:#d5d6d3;max-width:44ch;margin-top:26px}
+.hero-lede strong{color:var(--cream);font-weight:600}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px 26px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:14px;padding:16px 24px;min-height:54px;font:600 12px/1 var(--mono);letter-spacing:.11em;text-transform:uppercase;text-decoration:none;transition:background .16s,border-color .16s,color .16s}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:var(--red-hi)}
+.btn-ghost{border:1px solid var(--line);color:var(--cream)}
+.btn-ghost:hover{border-color:var(--cream)}
+.hero-fine{margin-top:20px;font:500 9.5px/1.85 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--dim);max-width:52ch}
+/* the stacked "shelf" of cars in the hero */
+.shelf-art{border:1px solid var(--line);background:linear-gradient(#15181d,#0e1013);padding:20px 20px 0}
+.shelf-art-top{display:flex;justify-content:space-between;gap:14px;font:500 9px/1.5 var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--dim);padding-bottom:16px;border-bottom:1px solid var(--line-soft)}
+.shelf-rows{display:grid;gap:0}
+.shelf-row{display:flex;align-items:flex-end;gap:12px;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+.shelf-row:nth-child(2){justify-content:flex-end}
+.shelf-row:nth-child(3){justify-content:center}
+.shelf-row:nth-child(4){justify-content:flex-end}
+.shelf-row:last-child{border-bottom:0}
+.shelf-row .diecast{flex:0 1 auto;width:min(100%,270px)}
+.diecast{width:100%;height:auto}
+.dc-body{fill:var(--dc,#c9ccd2)}
+.dc-glass{fill:#0b0c0e;opacity:.55}
+.dc-eye-w{fill:#f4f6f8}
+.dc-eye{fill:#16323f}
+.dc-tyre{fill:#0d0e11}
+.dc-rim{fill:#5c6069}
+.dc-stripe{fill:#ffffff2e}
+.dc-dark{fill:#0d0e11}
+@media(max-width:960px){
+  .hero-inner{grid-template-columns:1fr;align-items:start}
+  .shelf-art{order:-1}
+}
+
+/* ---------- ticker ---------- */
+.ticker{border-block:1px solid var(--line);background:var(--panel);overflow:hidden}
+.ticker-inner{display:flex;align-items:center;gap:40px;padding:16px var(--gutter);font:500 10px/1.6 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--muted);white-space:nowrap;overflow-x:auto;scrollbar-width:none}
+.ticker-inner::-webkit-scrollbar{display:none}
+.ticker-inner b{color:var(--cream);font-family:var(--display);font-size:20px;font-weight:800;letter-spacing:0;margin-right:9px}
+.ticker-inner span{display:inline-flex;align-items:baseline;flex:none}
+
+/* ---------- generic section furniture ---------- */
+.section{padding-block:clamp(56px,8vw,110px)}
+.section-label{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-bottom:18px;border-bottom:1px solid var(--line);font:500 9.5px/1.6 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--dim);margin-bottom:clamp(28px,4vw,46px)}
+.section-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.82fr);gap:clamp(24px,4vw,60px);align-items:end;margin-bottom:clamp(30px,4vw,52px)}
+.section-head h2{font-size:clamp(46px,7.2vw,94px)}
+.section-head p{color:var(--muted);font-size:15px;line-height:1.8;max-width:50ch}
+@media(max-width:840px){.section-head{grid-template-columns:1fr}}
+
+/* ---------- catalogue preview ---------- */
+.preview{border:1px solid var(--line);background:var(--panel);box-shadow:0 30px 80px #0007}
+.preview-chrome{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--panel-2)}
+.preview-dots{display:flex;gap:6px;flex:none}
+.preview-dots i{width:9px;height:9px;border-radius:50%;background:#ffffff1c}
+.preview-dots i:first-child{background:var(--red)}
+.preview-url{flex:1;text-align:center;font:500 10px/1 var(--mono);letter-spacing:.06em;color:var(--dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.preview-body{padding:clamp(20px,3vw,34px)}
+.preview-title{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(26px,3.4vw,40px);line-height:.94;letter-spacing:-.02em}
+.preview-sub{color:var(--muted);font-size:13.5px;margin-top:8px}
+.controls{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr) auto;gap:12px;margin-top:22px}
+.control{border:1px solid var(--line);background:var(--panel-2);padding:11px 14px;min-width:0}
+.control span{display:block;font:500 8.5px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.control b{display:block;font-weight:500;font-size:13px;color:#c3c6cc;margin-top:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.control-btn{border:1px solid var(--line);background:var(--panel-3);display:grid;place-items:center;padding-inline:22px;font:600 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--cream)}
+.count-line{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line-soft);font:500 10px/1.6 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.count-line b{color:var(--cream)}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:20px}
+.card{border:1px solid var(--line);background:var(--panel-2);display:flex;flex-direction:column}
+.card-art{aspect-ratio:1.34;background:var(--card-bg,#1d2026);display:grid;place-items:center;padding:14px;position:relative;overflow:hidden}
+.card-art:after{content:'';position:absolute;left:14px;right:14px;bottom:16px;height:1px;background:#ffffff14}
+.card-art .diecast{width:100%;position:relative;z-index:1}
+.card-meta{padding:13px 14px 15px;display:grid;gap:6px}
+.card-meta h3{font-size:13.5px;line-height:1.35;font-weight:600;letter-spacing:-.01em}
+.card-series{font:500 8.5px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.rating{display:flex;align-items:center;gap:8px;margin-top:2px}
+.stars{position:relative;display:inline-block;font-size:13px;line-height:1;letter-spacing:1.5px;flex:none}
+.stars-base{color:#3a3f48}
+.stars-fill{position:absolute;left:0;top:0;width:var(--fill,0%);overflow:hidden;white-space:nowrap;color:var(--gold)}
+.rating small{font:500 9.5px/1 var(--mono);color:var(--dim)}
+.card-tag{align-self:flex-start;margin:0 14px 14px;border:1px solid var(--line);padding:4px 8px;font:500 8px/1.4 var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+.preview-note{margin-top:20px;font:500 9px/1.85 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--dim);max-width:78ch}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.controls{grid-template-columns:1fr 1fr}.control-btn{grid-column:1/-1;padding-block:13px}}
+@media(max-width:420px){.controls{grid-template-columns:1fr}.cards{gap:10px}.card-meta h3{font-size:12.5px}.card-art{aspect-ratio:1.5}}
+
+/* ---------- what's inside ---------- */
+.inside{background:var(--panel);border-block:1px solid var(--line)}
+.wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:0 34px}
+.wall li{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(19px,2.05vw,27px);line-height:1.5;letter-spacing:-.008em;color:#c8cbd1;border-bottom:1px solid var(--line-soft);padding-block:7px;display:flex;align-items:baseline;gap:10px}
+.wall li i{font:500 9px/1 var(--mono);font-style:normal;color:var(--red-hi);flex:none}
+.wall li:hover{color:var(--cream)}
+.tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:clamp(28px,4vw,44px)}
+.tags li{border:1px solid var(--line);padding:9px 13px;font:500 10px/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);background:var(--panel-2)}
+.inside-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;margin-top:clamp(30px,4vw,48px);padding-top:20px;border-top:1px solid var(--line);font:500 9.5px/1.8 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+
+/* ---------- three things ---------- */
+.things{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.thing{background:var(--void);padding:clamp(26px,3.4vw,42px);display:grid;gap:14px;align-content:start}
+.thing-no{font:500 10px/1 var(--mono);letter-spacing:.14em;color:var(--red-hi)}
+.thing h3{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(30px,3.6vw,46px);line-height:.92;letter-spacing:-.02em}
+.thing p{color:var(--muted);font-size:14px;line-height:1.8}
+.thing-bullets{display:grid;gap:8px;margin-top:4px}
+.thing-bullets li{font:500 10px/1.6 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#a9adb5;padding-left:16px;position:relative}
+.thing-bullets li:before{content:'';position:absolute;left:0;top:.52em;width:7px;height:1px;background:var(--red-hi)}
+@media(max-width:840px){.things{grid-template-columns:1fr}}
+
+/* ---------- closing cta ---------- */
+.cta{background:var(--red);color:#fff;padding-block:clamp(52px,7vw,96px);position:relative;overflow:hidden}
+.cta:before{content:'1455';position:absolute;right:-.04em;bottom:-.32em;font:900 clamp(180px,30vw,420px)/.7 var(--display);color:#ffffff17;pointer-events:none;letter-spacing:-.04em}
+.cta-inner{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(26px,4vw,60px);align-items:center}
+.cta h2{font-size:clamp(48px,7.6vw,104px)}
+.cta h2 em{font-style:normal;-webkit-text-stroke:1.4px #fff;color:transparent}
+.cta p{margin-top:18px;font-size:15px;line-height:1.75;color:#ffe4e2;max-width:46ch}
+.btn-white{background:#fff;color:var(--red);white-space:nowrap}
+.btn-white:hover{background:#ffe9e7}
+@media(max-width:840px){.cta-inner{grid-template-columns:1fr;align-items:start}}
+
+/* ---------- footer ---------- */
+.footer{padding-block:clamp(38px,5vw,64px) 30px}
+.footer-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:22px;padding-bottom:26px;border-bottom:1px solid var(--line)}
+.footer-links{display:flex;flex-wrap:wrap;gap:22px}
+.footer-links a{font:500 10px/1 var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--muted);text-decoration:none;min-height:40px;display:flex;align-items:center}
+.footer-links a:hover{color:var(--cream)}
+.notes{border-bottom:1px solid var(--line)}
+.notes>summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:20px;font:500 10px/1.5 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.notes>summary::-webkit-details-marker{display:none}
+.notes>summary:after{content:'+';font:400 19px/1 var(--body);color:var(--red-hi)}
+.notes[open]>summary:after{content:'\2013'}
+.notes-body{padding-bottom:26px;display:grid;gap:14px;max-width:88ch}
+.notes-body p{font-size:13px;line-height:1.85;color:var(--muted)}
+.notes-body a{color:#c9ccd2}
+.footer-fine{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-top:24px;font:500 9px/1.9 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--dim)}
+.footer-fine p{max-width:74ch}
+</style>
+<link rel="stylesheet" href="../assets/club-shell.css">
+<script src="../assets/club-shell.js" defer></script>
+</head>
+<body data-cc-page="carsdb">
+<a class="skip" href="#main">Skip to the catalogue</a>
+
+<nav class="cc-global" aria-label="The Cars Club site navigation"><div class="cc-bar"><a class="cc-home" href="../index.html"><span class="cc-arrow" aria-hidden="true">←</span>THE CARS CLUB</a><span class="cc-location">05 / CarsDB</span><details class="cc-switcher"><summary>All roads</summary><div class="cc-menu"><a href="../cars/index.html" data-cc-route="cars"><span>01</span><span>The Scenic Route</span></a><a href="../cars-2/index.html" data-cc-route="cars-2"><span>02</span><span>The Defense Bureau</span></a><a href="../cars-3/index.html" data-cc-route="cars-3"><span>03</span><span>The Next Lap</span></a><a href="../cars-land/index.html" data-cc-route="cars-land"><span>04</span><span>Cars Land</span></a><a href="../carsdb/index.html" data-cc-route="carsdb" aria-current="page"><span>05</span><span>CarsDB</span></a><a class="cc-menu-home" href="../index.html"><span>↖</span><span>Back to the club homepage</span></a></div></details></div></nav>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="flag" viewBox="0 0 36 36"><g fill="currentColor"><rect x="4" y="4" width="7" height="7"/><rect x="18" y="4" width="7" height="7"/><rect x="11" y="11" width="7" height="7"/><rect x="25" y="11" width="7" height="7"/><rect x="4" y="18" width="7" height="7"/><rect x="18" y="18" width="7" height="7"/></g><rect x="4" y="28" width="28" height="4" fill="#e31c1c"/></symbol>
+<symbol id="ne" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M6 18 18 6M7 6h11v11"/></symbol>
+<symbol id="down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 5v14m-6-6 6 6 6-6"/></symbol>
+<!-- One stylised die-cast, recoloured per card. Original art, not a product photo. -->
+<symbol id="diecast" viewBox="0 0 200 104">
+  <path class="dc-body" d="M12 78V62c0-7 5-12 12-14l34-8 24-20c5-4 11-6 18-6h32c8 0 15 3 20 9l16 19 18 5c7 2 10 7 10 14v17Z"/>
+  <path class="dc-glass" d="M88 20h30c5 0 10 2 13 6l12 16H70l13-19c1-2 3-3 5-3Z"/>
+  <path class="dc-stripe" d="M12 66h176v5H12Z"/>
+  <circle class="dc-eye-w" cx="103" cy="32" r="10"/>
+  <circle class="dc-eye" cx="107" cy="33" r="4.4"/>
+  <circle class="dc-tyre" cx="54" cy="78" r="17"/>
+  <circle class="dc-tyre" cx="152" cy="78" r="17"/>
+  <circle class="dc-rim" cx="54" cy="78" r="7"/>
+  <circle class="dc-rim" cx="152" cy="78" r="7"/>
+</symbol>
+<!-- Because the catalogue really does contain a blimp. -->
+<symbol id="blimp" viewBox="0 0 200 104">
+  <ellipse class="dc-body" cx="90" cy="44" rx="76" ry="31"/>
+  <path class="dc-body" d="M162 44 196 20v48Z"/>
+  <path class="dc-dark" d="M72 60h40c4 0 7 3 7 7v12c0 4-3 7-7 7H72c-4 0-7-3-7-7V67c0-4 3-7 7-7Z"/>
+  <path class="dc-stripe" d="M18 40h150v6H18Z"/>
+  <circle class="dc-eye-w" cx="52" cy="38" r="12"/>
+  <circle class="dc-eye" cx="47" cy="39" r="5"/>
+</symbol>
+</defs></svg>
+
+<header class="header">
+  <a class="brand" href="#top" aria-label="CarsDB, top of page">
+    <span class="brand-mark"><svg viewBox="0 0 36 36" aria-hidden="true"><use href="#flag"/></svg></span>
+    <span class="wordmark">cars<span>DB</span></span>
+  </a>
+  <nav class="header-nav" id="page-nav" aria-label="On this page">
+    <a href="#catalogue">The catalogue</a>
+    <a href="#inside">What&rsquo;s inside</a>
+    <a href="#how">How it works</a>
+  </nav>
+  <a class="header-cta" href="https://cars.arrangedgodly.com" target="_blank" rel="noopener noreferrer">Open CarsDB<span> ↗</span></a>
+</header>
+
+<main id="main">
+
+<section class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div>
+      <p class="eyebrow">05 / The one that isn&rsquo;t about a film</p>
+      <h1>
+        <span class="num">1,455</span>
+        <span class="thin">little cars.</span>
+        <span>One list.</span>
+      </h1>
+      <p class="hero-lede">Somewhere along the line, loving these films turned into a spreadsheet problem. <strong>CarsDB is the answer to it</strong> &mdash; a searchable catalogue of every Disney and Pixar <i>Cars</i> die-cast we could get our hands on, from Lightning McQueen to a blimp.</p>
+      <div class="hero-actions">
+        <a class="btn btn-red" href="https://cars.arrangedgodly.com" target="_blank" rel="noopener noreferrer">Open the catalogue <svg width="17" height="17" aria-hidden="true"><use href="#ne"/></svg></a>
+        <a class="btn btn-ghost" href="#catalogue">See what it looks like <svg width="17" height="17" aria-hidden="true"><use href="#down"/></svg></a>
+      </div>
+      <p class="hero-fine">Free to browse &middot; free account to rate and track &middot; an independent fan project by Arranged Godly</p>
+    </div>
+
+    <figure class="shelf-art">
+      <div class="shelf-art-top"><span>The shelf / a small sample</span><span>1:55 scale, in spirit</span></div>
+      <div class="shelf-rows">
+        <div class="shelf-row"><svg class="diecast" style="--dc:#d5372c" viewBox="0 0 200 104" aria-hidden="true"><use href="#diecast"/></svg></div>
+        <div class="shelf-row"><svg class="diecast" style="--dc:#8a6a3f" viewBox="0 0 200 104" aria-hidden="true"><use href="#diecast"/></svg></div>
+        <div class="shelf-row"><svg class="diecast" style="--dc:#3f7f8c" viewBox="0 0 200 104" aria-hidden="true"><use href="#diecast"/></svg></div>
+        <div class="shelf-row"><svg class="diecast" style="--dc:#4a5464" viewBox="0 0 200 104" aria-hidden="true"><use href="#diecast"/></svg></div>
+      </div>
+      <figcaption class="sr-only">Four stylised die-cast illustrations representing a collector&rsquo;s shelf. Original artwork, not photographs of Mattel products.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span><b>1,455</b> vehicles catalogued</span>
+    <span><b>30</b> series</span>
+    <span><b>17</b> tags</span>
+    <span><b>61</b> pages of catalogue</span>
+    <span><b>5</b> stars, half-steps allowed</span>
+    <span><b>2</b> lists &mdash; owned &amp; wishlist</span>
+    <span><b>0</b> ads</span>
+  </div>
+</div>
+
+<section class="section wrap" id="catalogue" aria-labelledby="catalogue-title">
+  <div class="section-label"><span>01 / The catalogue</span><span>Search. Sort. Filter. Repeat.</span></div>
+  <div class="section-head">
+    <h2 id="catalogue-title">One page.<br>Every car<br>you can name.</h2>
+    <p>Search by name, series or tag. Sort alphabetically or by how the rest of us rated it. Narrow it to what you already own, or to the ones still missing from the shelf. It is a catalogue built the way a collector actually looks for things.</p>
+  </div>
+
+  <div class="preview">
+    <div class="preview-chrome"><span class="preview-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="preview-url">cars.arrangedgodly.com</span></div>
+    <div class="preview-body">
+      <p class="preview-title">CarsDB Catalog</p>
+      <p class="preview-sub">Browse, rate, and track your collection.</p>
+      <div class="controls" aria-hidden="true">
+        <div class="control"><span>Search</span><b>Search by name, series, tag…</b></div>
+        <div class="control"><span>Sort by</span><b>Name (A&ndash;Z)</b></div>
+        <div class="control"><span>Show</span><b>All cars</b></div>
+        <div class="control control-btn">Filters</div>
+      </div>
+      <p class="count-line"><span>Showing <b>1,455</b> cars</span><span>Page 1 of 61</span></p>
+
+      <ul class="cards">
+        <li class="card" style="--card-bg:#241a1a">
+          <div class="card-art"><svg class="diecast" style="--dc:#d13f2e" viewBox="0 0 200 104" aria-hidden="true"><use href="#diecast"/></svg></div>
+          <div class="card-meta">
+            <h3>95 Fan Luigi</h3>
+            <p class="card-series">Cars 2</p>
+            <p class="rating"><span class="stars" role="img" aria-label="Rated 4.5 out of 5"><span class="stars-base" aria-hidden="true">★★★★★</span><span class="stars-fill" style="--fill:90%" aria-hidden="true">★★★★★</span></span><small>4.5 (1)</small></p>
+          </div>
+          <span class="card-tag">Radiator Springs</span>
+        </li>
+        <li class="card" style="--card-bg:#1a2124">
+          <div class="card-art"><svg class="diecast" style="--dc:#5c8f7a" viewBox="0 0 200 104" aria-hidden="true"><use href="#diecast"/></svg></div>
+          <div class="card-meta">
+            <h3>Acer</h3>
+            <p class="card-series">Cars 2</p>
+            <p class="rating"><span class="stars" role="img" aria-label="Rated 4 out of 5"><span class="stars-base" aria-hidden="true">★★★★★</span><span class="stars-fill" style="--fill:80%" aria-hidden="true">★★★★★</span></span><small>4.0 (1)</small></p>
+          </div>
+        </li>
+        <li class="card" style="--card-bg:#22201a">
+          <div class="card-art"><svg class="diecast" style="--dc:#c0492f" viewBox="0 0 200 104" aria-hidden="true"><use href="#diecast"/></svg></div>
+          <div class="card-meta">
+            <h3>Aggro McQueen</h3>
+            <p class="card-series">Cars</p>
+            <p class="rating"><span class="stars" role="img" aria-label="Rated 3 out of 5"><span class="stars-base" aria-hidden="true">★★★★★</span><span class="stars-fill" style="--fill:60%" aria-hidden="true">★★★★★</span></span><small>3.0 (1)</small></p>
+          </div>
+        </li>
+        <li class="card" style="--card-bg:#1b1f26">
+          <div class="card-art"><svg class="diecast" style="--dc:#9aa2ad" viewBox="0 0 200 104" aria-hidden="true"><use href="#blimp"/></svg></div>
+          <div class="card-meta">
+            <h3>Al Oft the Lightyear Blimp</h3>
+            <p class="card-series">Cars</p>
+            <p class="rating"><span class="stars" role="img" aria-label="Rated 1.5 out of 5"><span class="stars-base" aria-hidden="true">★★★★★</span><span class="stars-fill" style="--fill:30%" aria-hidden="true">★★★★★</span></span><small>1.5 (1)</small></p>
+          </div>
+        </li>
+        <li class="card" style="--card-bg:#1e2126">
+          <div class="card-art"><svg class="diecast" style="--dc:#aeb4bd" viewBox="0 0 200 104" aria-hidden="true"><use href="#diecast"/></svg></div>
+          <div class="card-meta">
+            <h3>&ldquo;Slim&rdquo; Hood</h3>
+            <p class="card-series">Cars 3</p>
+            <p class="rating"><span class="stars" role="img" aria-label="Not yet rated"><span class="stars-base" aria-hidden="true">★★★★★</span><span class="stars-fill" style="--fill:0%" aria-hidden="true">★★★★★</span></span><small>0.0 (0)</small></p>
+          </div>
+        </li>
+        <li class="card" style="--card-bg:#1a2320">
+          <div class="card-art"><svg class="diecast" style="--dc:#4f8f6b" viewBox="0 0 200 104" aria-hidden="true"><use href="#diecast"/></svg></div>
+          <div class="card-meta">
+            <h3>Adam Roadriguez</h3>
+            <p class="card-series">Cars on the Road</p>
+            <p class="rating"><span class="stars" role="img" aria-label="Not yet rated"><span class="stars-base" aria-hidden="true">★★★★★</span><span class="stars-fill" style="--fill:0%" aria-hidden="true">★★★★★</span></span><small>0.0 (0)</small></p>
+          </div>
+        </li>
+      </ul>
+
+      <p class="preview-note">A layout preview, drawn by hand. The illustrations are original fan art rather than product photography, and the ratings shown are the real ones from September 2026 &mdash; they move as people vote. The live catalogue is at cars.arrangedgodly.com.</p>
+    </div>
+  </div>
+</section>
+
+<section class="inside" id="inside" aria-labelledby="inside-title">
+  <div class="wrap section">
+    <div class="section-label"><span>02 / What&rsquo;s inside</span><span>Thirty series. Seventeen tags.</span></div>
+    <div class="section-head">
+      <h2 id="inside-title">It goes<br>further than<br>you think.</h2>
+      <p>The films are only the start of it. There are ice racers and mud racers and glow-in-the-dark racers. There is a whole series for a Mater short about a ghost light. There are planes. The catalogue takes all of it seriously, because somebody has to.</p>
+    </div>
+    <ul class="wall">
+      <li><i>01</i>Carbon Racers</li><li><i>02</i>Carnival Cup</li><li><i>03</i>Cars</li><li><i>04</i>Cars 2</li>
+      <li><i>05</i>Cars 3</li><li><i>06</i>Cars Toon</li><li><i>07</i>Cars on the Road</li><li><i>08</i>Drag Racing</li>
+      <li><i>09</i>Fan Favorites</li><li><i>10</i>Fireball Beach Racers</li><li><i>11</i>Global Racers Cup</li><li><i>12</i>Glow Racers</li>
+      <li><i>13</i>Ice Racers</li><li><i>14</i>Mater Saves Christmas</li><li><i>15</i>Mater and the Easter Buggy</li><li><i>16</i>Mater and the Ghostlight</li>
+      <li><i>17</i>Mud Racing</li><li><i>18</i>NASCAR</li><li><i>19</i>Neon Racers</li><li><i>20</i>Planes</li>
+      <li><i>21</i>Planes: Fire and Rescue</li><li><i>22</i>RS 24h Endurance Race</li><li><i>23</i>Race &amp; Rescue</li><li><i>24</i>Racing Red</li>
+      <li><i>25</i>Road Trip</li><li><i>26</i>Rocket Racing</li><li><i>27</i>Silver Racer</li><li><i>28</i>Thomasville Racing Legends</li>
+      <li><i>29</i>Vitaminamulch: Air Spectacular</li><li><i>30</i>World of Cars</li>
+    </ul>
+    <ul class="tags" aria-label="Catalogue tags">
+      <li>Air Mater</li><li>Delinquent Road Hazards</li><li>Disney 100</li><li>Drive In</li><li>El Materdor</li>
+      <li>Heavy Metal Mater</li><li>Mater Private Eye</li><li>Mater the Greater</li><li>Monster Truck Mater</li>
+      <li>Moon Mater</li><li>Radiator Springs</li><li>Rescue Squad Mater</li><li>The Radiator Springs 500 1/2</li>
+      <li>Time Travel Mater</li><li>To Protect and Serve</li><li>Tokyo Mater</li><li>Unidentified Flying Mater</li>
+    </ul>
+    <p class="inside-foot"><span>Yes, eleven of the seventeen tags are Mater. We are not going to apologise for that.</span><span>Series and tags as listed September 2026</span></p>
+  </div>
+</section>
+
+<section class="section wrap" id="how" aria-labelledby="how-title">
+  <div class="section-label"><span>03 / How it works</span><span>Three things, done properly</span></div>
+  <div class="section-head">
+    <h2 id="how-title">Browse.<br>Rate.<br>Keep track.</h2>
+    <p>No storefront, no price guide, no valuations. CarsDB is a reference and a checklist &mdash; the two things that are genuinely hard to find when the line runs to well over a thousand vehicles.</p>
+  </div>
+  <div class="things">
+    <article class="thing">
+      <span class="thing-no">01</span>
+      <h3>Browse</h3>
+      <p>Start typing and the catalogue narrows as you go. Open the filter panel to cut it down by series or tag &mdash; or several at once, when you are trying to remember which Mater short the one with the ghost came from.</p>
+      <ul class="thing-bullets"><li>Search names, series &amp; tags</li><li>Sort A&ndash;Z, Z&ndash;A, or by rating</li><li>Filter by 30 series, 17 tags</li></ul>
+    </article>
+    <article class="thing">
+      <span class="thing-no">02</span>
+      <h3>Rate</h3>
+      <p>Five stars, half-steps allowed, one vote each. It is not a market value and it is not a rarity score. It is a room full of people quietly agreeing that some sculpts are better than others.</p>
+      <ul class="thing-bullets"><li>Half-star precision</li><li>Ratings shown with a vote count</li><li>Sort the whole catalogue by it</li></ul>
+    </article>
+    <article class="thing">
+      <span class="thing-no">03</span>
+      <h3>Keep track</h3>
+      <p>Two lists. One for what is already on the shelf, one for what is not yet. Then filter the catalogue down to either &mdash; which is how you avoid buying the same Doc Hudson twice.</p>
+      <ul class="thing-bullets"><li>My owned &amp; my wishlist</li><li>Filter the catalogue to either list</li><li>Tied to a free account, not a browser</li></ul>
+    </article>
+  </div>
+</section>
+
+<section class="cta" aria-labelledby="cta-title">
+  <div class="wrap cta-inner">
+    <div>
+      <h2 id="cta-title">Go find<br><em>your shelf.</em></h2>
+      <p>Browsing needs nothing at all. Rating and tracking need a free account, and that is the whole extent of the paperwork.</p>
+    </div>
+    <a class="btn btn-white" href="https://cars.arrangedgodly.com" target="_blank" rel="noopener noreferrer">cars.arrangedgodly.com <svg width="17" height="17" aria-hidden="true"><use href="#ne"/></svg></a>
+  </div>
+</section>
+
+</main>
+
+<!-- A shared onward route, not a replacement for the page's original footer. -->
+<aside class="cc-next" aria-label="Continue exploring The Cars Club"><div class="cc-next-inner"><div><span class="cc-next-kicker">THE ROAD KEEPS GOING / NEXT STOP 01</span><h2 class="cc-next-title">The Scenic Route</h2><p class="cc-next-note">Back to where the feeling started. A rookie, an old head, and a road worth slowing down for.</p></div><div class="cc-next-actions"><a class="cc-next-go" href="../cars/index.html" data-cc-route="cars">Take the next turn <span aria-hidden="true">↗</span></a><a class="cc-next-home" href="../index.html">Back to the club <span aria-hidden="true">↖</span></a></div></div></aside>
+
+<footer class="footer wrap">
+  <div class="footer-top">
+    <a class="brand" href="#top" aria-label="CarsDB, back to top">
+      <span class="brand-mark"><svg viewBox="0 0 36 36" aria-hidden="true"><use href="#flag"/></svg></span>
+      <span class="wordmark">cars<span>DB</span></span>
+    </a>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="#catalogue">The catalogue</a>
+      <a href="#inside">What&rsquo;s inside</a>
+      <a href="#how">How it works</a>
+      <a href="https://cars.arrangedgodly.com" target="_blank" rel="noopener noreferrer">Open CarsDB ↗</a>
+    </nav>
+  </div>
+
+  <details class="notes" id="notes">
+    <summary><span>The fine print / what this page is</span></summary>
+    <div class="notes-body">
+      <p><span style="color:var(--cream)">A front door, not the app.</span> This page introduces <a href="https://cars.arrangedgodly.com" target="_blank" rel="noopener noreferrer">CarsDB</a>, an independent catalogue built by Arranged Godly. Everything interactive &mdash; the search, the ratings, the owned and wishlist tracking &mdash; lives on that site behind a free account. This page holds no catalogue data of its own.</p>
+      <p><span style="color:var(--cream)">The numbers.</span> The counts on this page (1,455 vehicles, 30 series, 17 tags, 61 pages of results) and the six example ratings were read directly from the live catalogue in September 2026. They change as the catalogue grows and as people vote, so treat them as a snapshot rather than a running total.</p>
+      <p><span style="color:var(--cream)">The pictures.</span> Every illustration here is original stylised fan art. None of it is a photograph of a Mattel product, and none of it identifies a specific release, paint scheme, or product code. CarsDB is not a price guide, a rarity index, an appraisal service, or a shop &mdash; it does not publish values and nothing is for sale.</p>
+      <p><span style="color:var(--cream)">Nothing to save.</span> This page has no forms, no downloads, no clipboard access, and no local storage of its own. The only thing the surrounding club site remembers is which of its five pages you have opened.</p>
+    </div>
+  </details>
+
+  <div class="footer-fine">
+    <p>An independent fan project. Not affiliated with, sponsored by, or endorsed by Disney, Pixar, or Mattel. <i>Cars</i> characters, names, and related trademarks belong to their respective owners.</p>
+    <span>Small cars. Big spreadsheet.</span>
+  </div>
+</footer>
+
+<script>
+'use strict';
+(function () {
+  // Highlight the section currently in view. Passive; nothing else on this page runs.
+  var links = Array.prototype.slice.call(document.querySelectorAll('#page-nav a[href^="#"]'));
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      links.forEach(function (link) {
+        if (link.getAttribute('href') === '#' + entry.target.id) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    });
+  }, { rootMargin: '-15% 0px -65% 0px', threshold: 0 });
+  links.forEach(function (link) {
+    var target = document.getElementById(link.getAttribute('href').slice(1));
+    if (target) observer.observe(target);
+  });
+})();
+</script>
+</body>
+</html>

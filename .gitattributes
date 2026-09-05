@@ -1,0 +1,5 @@
+# Normalise line endings so the site is byte-identical across machines.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.woff2 binary

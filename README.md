@@ -72,7 +72,7 @@ Its displayed counts and example ratings are a **September 2026 snapshot**, not 
 Clone the repository and serve its root with Python:
 
 ```bash
-git clone https://github.com/Arrangedgodly/cars-fp.git
+git clone https://github.com/gradywasil/cars-fp.git
 cd cars-fp
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
